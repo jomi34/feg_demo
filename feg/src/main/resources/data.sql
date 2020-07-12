@@ -22,11 +22,11 @@ INSERT INTO public.competitions VALUES (21, 'Prva Hrvatska malonogometna liga', 
 
 
 
-INSERT INTO public.matches (/*match_id,*/ competition_id, kickoff, home, away, win, draw, lose) VALUES ( 17, timestamp '2020-07-07 20:00:00', 'Istanbul Basaksehir', 'Denizlispor',  1.4, 4.3, 8.0)
+INSERT INTO public.matches (competition_id, kickoff, home, away, win, draw, lose) VALUES ( 17, timestamp '2020-07-07 20:00:00', 'Istanbul Basaksehir', 'Denizlispor',  1.4, 4.3, 8.0)
 WHERE NOT EXISTS (SELECT match_id FROM public.matches WHERE home = 'Istanbul Basaksehir');
-INSERT INTO public.matches (/*match_id,*/ competition_id, kickoff, home, away, win, draw, lose) VALUES ( 18, timestamp '2020-07-07 19:00:00', 'Crystal Palace', 'Chelsea',  6.3, 4.0, 1.5)
+INSERT INTO public.matches (competition_id, kickoff, home, away, win, draw, lose) VALUES ( 18, timestamp '2020-07-07 19:00:00', 'Crystal Palace', 'Chelsea',  6.3, 4.0, 1.5)
 WHERE NOT EXISTS (SELECT match_id FROM public.matches WHERE home = 'Crystal Palace');
-INSERT INTO public.matches (/*match_id,*/ competition_id, kickoff, home, away, win, draw, lose) VALUES ( 15, timestamp '2020-07-07 19:30:00', 'Lecce', 'Lazio',	9.00, 4.50, 1.35)
+INSERT INTO public.matches (competition_id, kickoff, home, away, win, draw, lose) VALUES ( 15, timestamp '2020-07-07 19:30:00', 'Lecce', 'Lazio',	9.00, 4.50, 1.35)
 WHERE NOT EXISTS (SELECT match_id FROM public.matches WHERE home = 'Lecce');
-INSERT INTO public.matches (/*match_id,*/ competition_id, kickoff, home, away, win, draw, lose) VALUES ( 21, timestamp '2020-07-07 18:00:00', 'Olmissum', 'Vrgorac',	1.25, 7.0, 6.0)
+INSERT INTO public.matches (competition_id, kickoff, home, away, win, draw, lose) VALUES ( 21, timestamp '2020-07-07 18:00:00', 'Olmissum', 'Vrgorac',	1.25, 7.0, 6.0)
 WHERE NOT EXISTS (SELECT match_id FROM public.matches WHERE home = 'Olmissum');

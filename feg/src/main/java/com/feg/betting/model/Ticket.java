@@ -20,8 +20,9 @@ import javax.persistence.Table;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.SetUtils;
 
-import com.feg.betting.model.dto.BetDTO;
-import com.feg.betting.model.dto.TicketResponse;
+import com.feg.betting.model.dto.BetPreviewDTO;
+import com.feg.betting.model.dto.TicketCheckResponse;
+import com.feg.betting.model.dto.TicketPreviewResponse;
 
 @Entity
 @Table(name = "tickets", schema = "public")
@@ -39,7 +40,27 @@ public class Ticket {
 	
 	@OneToMany(mappedBy="ticket")
     private List<Bet> bets;
+	
+	@Column(name="prize", nullable=true)
+	private Float prize;
 
+	/**
+	 * @return the prize of ticket if win or zero if it lost (any bet on the ticket lost no matter if some matches still to be played). If ticket is still active, returns NULL value.
+	 */
+	public Float getPrize() {
+		return prize;
+	}
+
+	/**
+	 * @param prize the prize to set
+	 */
+	public void setPrize(Float prize) {
+		this.prize = prize;
+	}
+
+	/**
+	 * @return list of all bets placed on ticket
+	 */
 	public List<Bet> getBets() {
 		return bets;
 	}
@@ -72,15 +93,20 @@ public class Ticket {
 		this.stake = stake;
 	}
 	
-	public TicketResponse toTicketResponse() {
-		TicketResponse response = new TicketResponse();
+		
+	/**
+	 * Builds ticket object to preview response. Based on placed bets and formulas it calculates overall odd including bonuses and all properties writes to a response.
+	 * @return
+	 */
+	public TicketPreviewResponse toTicketPreviewResponse() {
+		TicketPreviewResponse response = new TicketPreviewResponse();
 		response.setTicketId(id);
 		response.setStake(stake);
-		List<BetDTO> betsDTO = new ArrayList<BetDTO>();
+		List<BetPreviewDTO> betsDTO = new ArrayList<>();
 		
 		float multipliedOdd = 1.00f;
 		
-		Map<Sport, Integer> sportsFrequency = new HashMap<Sport, Integer>();
+		Map<Sport, Integer> sportsFrequency = new HashMap<>();
 		
 		if (bets != null) {
 			for (Bet bet : bets) {

@@ -17,4 +17,8 @@ public class TicketRequest {
 	public void setStake(float stake) {
 		this.stake = stake;
 	}
+	@Override
+	public String toString() {
+		return "TicketRequest [stake=" + stake + ", bets=" + bets + "]";
+	}
 }

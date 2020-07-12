@@ -40,6 +40,7 @@ CREATE TABLE public.tickets
     ticket_id bigserial NOT NULL,
     payment_time timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     stake real NOT NULL,
+	prize real NULL,
     PRIMARY KEY (ticket_id)
 )
 WITH (
@@ -91,3 +92,4 @@ WITH (
 
 ALTER TABLE public.scores
     OWNER to postgres;
+	

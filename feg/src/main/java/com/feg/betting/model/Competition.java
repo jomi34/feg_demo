@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Table(name = "competitions", schema = "public")
 public class Competition {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="competition_id")
 	private int id;
 	
