@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.feg.betting.exception.FegException;
-import com.feg.betting.model.dto.OddDTO;
+import com.feg.betting.model.dto.OddRequest;
 import com.feg.betting.service.CompetitionService;
 import com.feg.betting.service.OddService;
 
@@ -29,7 +29,7 @@ public class OddController {
 	}
 	
 	@PostMapping("odds")
-	public ResponseEntity<Object> createOdd(@RequestBody OddDTO odd) throws FegException{
+	public ResponseEntity<Object> createOdd(@RequestBody OddRequest odd) throws FegException{
 		
 		return ResponseEntity.ok().body(oddService.createOdd(odd));
 	}

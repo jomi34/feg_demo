@@ -3,7 +3,6 @@ package com.feg.betting.model.dto;
 import java.time.LocalDateTime;
 
 public class OddDTO {
-	private Integer competitionId;
 	private LocalDateTime kickoff;
 	  private String home;
 
@@ -14,61 +13,55 @@ public class OddDTO {
 	 private Float draw;
 
 	 private Float lose;
+	 
 
-	public String getAway() {
-		return away;
-	}
+		public String getAway() {
+			return away;
+		}
+		
+		public Float getDraw() {
+			return draw;
+		}
 
-	public Integer getCompetitionId() {
-		return competitionId;
-	}
+		public String getHome() {
+			return home;
+		}
 
-	public Float getDraw() {
-		return draw;
-	}
+		public LocalDateTime getKickoff() {
+			return kickoff;
+		}
 
-	public String getHome() {
-		return home;
-	}
+		public Float getLose() {
+			return lose;
+		}
 
-	public LocalDateTime getKickoff() {
-		return kickoff;
-	}
+		public Float getWin() {
+			return win;
+		}
 
-	public Float getLose() {
-		return lose;
-	}
+		public void setAway(String away) {
+			this.away = away;
+		}
+		
+		public void setDraw(Float draw) {
+			this.draw = draw;
+		}
 
-	public Float getWin() {
-		return win;
-	}
+		public void setHome(String home) {
+			this.home = home;
+		}
 
-	public void setAway(String away) {
-		this.away = away;
-	}
+		public void setKickoff(LocalDateTime kickoff) {
+			this.kickoff = kickoff;
+		}
 
-	public void setCompetitionId(Integer competitionId) {
-		this.competitionId = competitionId;
-	}
+		public void setLose(Float lose) {
+			this.lose = lose;
+		}
 
-	public void setDraw(Float draw) {
-		this.draw = draw;
-	}
+		public void setWin(Float win) {
+			this.win = win;
+		}
 
-	public void setHome(String home) {
-		this.home = home;
-	}
-
-	public void setKickoff(LocalDateTime kickoff) {
-		this.kickoff = kickoff;
-	}
-
-	public void setLose(Float lose) {
-		this.lose = lose;
-	}
-
-	public void setWin(Float win) {
-		this.win = win;
-	}
 
 }

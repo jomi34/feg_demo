@@ -2,6 +2,7 @@ package com.feg.betting.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,18 +13,19 @@ import com.feg.betting.exception.DataNotFoundException;
 import com.feg.betting.exception.FegException;
 import com.feg.betting.model.Competition;
 import com.feg.betting.model.Match;
-import com.feg.betting.model.dto.OddDTO;
+import com.feg.betting.model.dto.OddRequest;
+import com.feg.betting.model.dto.OddResponse;
 
 @Service
 public class OddService {
 	@Autowired MatchDao matchDao;
 	@Autowired CompetitionDao competitionDao;
 	
-	public List<Match> getAllOdds(){
-		return matchDao.findAll();		
+	public List<OddResponse> getAllOdds(){
+		return matchDao.findAll().stream().map(Match::toOddResponse).collect(Collectors.toList());	
 	}
 
-	public Match createOdd(OddDTO odd) throws FegException{
+	public Match createOdd(OddRequest odd) throws FegException{
 		Match match = new Match();
 		Integer competitionId = odd.getCompetitionId();
 		

@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import com.feg.betting.exception.DataNotFoundException;
 import com.feg.betting.exception.FegException;
 import com.feg.betting.exception.IncorrectInputException;
+import com.feg.betting.model.dto.OddResponse;
 
 /**
  * Entity class representing DB table match. It stores information about opponents and odds before the game. Result of the match is stored to separate table Scores.
@@ -172,6 +173,20 @@ public class Match {
 		if (result < 1.00)
 			throw new IncorrectInputException("Provided odd should not be less than 1.00!");
 		return result;
+	}
+	
+	public OddResponse toOddResponse() {
+		OddResponse response = new OddResponse();
+		response.setMatchId(id);
+		response.setAway(away);
+		response.setHome(home);
+		response.setSport(competition.getSport().toString());
+		response.setCompetition(competition.getName());
+		response.setWin(win);
+		response.setDraw(draw);
+		response.setLose(lose);
+		response.setKickoff(kickoff);
+		return response;
 	}
 
 }
